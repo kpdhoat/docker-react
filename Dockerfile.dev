@@ -1,0 +1,12 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json . 
+
+RUN npm install
+
+#not necessry for dev when using reference(volume) in docker compose but leaving as is  for using this life later for PROD
+COPY . .
+
+CMD ["npm", "run", "start"]
